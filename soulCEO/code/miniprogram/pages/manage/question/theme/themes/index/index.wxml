@@ -1,0 +1,27 @@
+<!--miniprogram/pages/manage/question/theme/themes/index/index.wxml-->
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">theme manage</view>
+        <view class="page__desc">列表</view>
+        <view class='right'><button class="weui-btn mini-btn" type="default" size="mini" bindtap='edit'>add</button></view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-form-preview" wx:for="{{theme_list}}">
+            
+            <view class="weui-form-preview__bd" bindtap='totheme' data-id="{{item._id}}" data-index="{{index}}" >
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__value">{{item.title}}</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+            <view bindtap='del' data-id="{{item._id}}" data-index="{{index}}"  class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">删除</view>
+                <view bindtap='edit' data-id="{{item._id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">修改</view>
+            <view bindtap='questionManage' data-id="{{item._id}}" data-index="{{index}}"  class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">题目管理</view>
+            <view wx:if="{{!item.is_active}}" bindtap='setActive' data-id="{{item._id}}" data-index="{{index}}"  class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">设为主页</view>
+            <view wx:if="{{item.is_active}}" bindtap='setNoActive' data-id="{{item._id}}" data-index="{{index}}"  class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">取消主页</view>
+            </view>
+        </view>
+        <button class="weui-btn" type="default" bindtap='lastPage'>下一页</button>
+    </view>
+</view>

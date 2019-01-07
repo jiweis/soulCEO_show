@@ -1,0 +1,66 @@
+{
+  "cloud": true,
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "pages": [
+    "pages/index/index",
+    "pages/theme/theme",
+    "pages/themeDetail/themeDetail",
+    "pages/question/question",
+    "pages/testResult/testResult",
+    "pages/user/login/login",
+    "pages/manage/manage/manage",
+    "pages/manage/tags/edit/edit",
+    "pages/manage/tags/index/index",
+    "pages/manage/question/index/index",
+    "pages/manage/question/edit/edit",
+    "pages/game/music/player/player",
+    "pages/appoint/mycreate/index/index",
+    "pages/appoint/mycreate/edit/edit",
+    "pages/appoint/myappoint/appoint/appoint",
+    "pages/appoint/myappoint/myappoints/myappoints",
+    "pages/mine/mine/index/index",
+    "pages/appoint/myappoint/occupy/occupy",
+    "pages/common/msg/error/error",
+    "pages/qa/poQa/poQa/poQa",
+    "pages/qa/myQa/index/index",
+    "pages/manage/question/theme/themes/index/index",
+    "pages/manage/question/theme/themes/edit/edit",
+    "pages/manage/question/theme/themes/questionManage/questionManage",
+    "pages/qa/myQa/qDetail/qDetail",
+    "pages/programmer/ml/myMl/index/index",
+    "pages/programmer/ml/myMl/ml/ml",
+    "pages/programmer/ml/myMl/edit/edit",
+    "pages/common/soso/soso/soso",
+    "pages/JeweiTest/test/test",
+    "pages/game/music/collects/collects",
+    "pages/mine/mine/account/account"
+  ],
+  "window": {
+    "navigationBarTitleText": "灵魂CEO",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#a8a8a8",
+    "selectedColor": "#B22222",
+    "borderStyle": "1rpx solid #e0e0e0",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "工具",
+        "iconPath": "images/tabbar/tools.png",
+        "selectedIconPath": "images/tabbar/tools_c.png"
+      },
+      {
+        "pagePath": "pages/mine/mine/index/index",
+        "text": "我的",
+        "iconPath": "images/tabbar/mine.png",
+        "selectedIconPath": "images/tabbar/mine_c.png"
+      }
+    ]
+  }
+}

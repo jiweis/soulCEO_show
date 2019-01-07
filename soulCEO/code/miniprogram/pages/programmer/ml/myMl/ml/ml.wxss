@@ -1,0 +1,4 @@
+/* miniprogram/pages/programmer/ml/myMl/ml/ml.wxss */
+.showArea{
+   padding: 10px;
+}

@@ -1,0 +1,47 @@
+<!--miniprogram/pages/manage/question/theme/themes/edit/edit.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{showTopTips}}</view>
+    <form bindsubmit="save">
+
+      <view class="weui-cells__title">title</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入文本" name="title" value='{{themeInfo.title}}' />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">text</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入文本" name="text" value='{{themeInfo.text}}' style="height: 3.3em" />
+          </view>
+        </view>
+      </view>
+
+       <view class="weui-cells__title">其他信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">标签数量</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入大于2的数字" value='{{themeInfo.tag_num}}' name="tag_num"/>
+        </view>
+      </view>
+     
+      
+    </view>
+  
+
+      <view class="weui-btn-area">
+        <button class="weui-btn" formType="submit">确定</button>
+      </view>
+    </form>
+
+
+  </view>
+</view>

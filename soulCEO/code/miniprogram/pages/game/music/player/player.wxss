@@ -1,0 +1,125 @@
+/* miniprogram/pages/game/music/player/player.wxss */
+page{
+  background-color: #ebebeb;
+}
+.content{
+  background-color: #ebebeb;
+  padding: 10px;
+}
+.itemcover {
+  text-align: center;
+  margin: 10px;
+  
+}
+.itemcoverimg{
+border-radius: 50%;
+border-color: #FFFFFF;
+width: 200px; height: 200px; background-color: #ebebeb;
+}
+
+.lrc_hr {
+  text-align: center;
+  margin: 10px;
+}
+
+.radioBtnDiv {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid #ebebeb;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  position: relative;
+}
+
+.playPBtn {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #B5B5B5;
+  position: absolute;
+  top: 30%;
+  left: 52%;
+  margin-top: -5px; /*高的一半*/
+  margin-left: -5px; /*宽的一半*/
+  text-align: center;
+  border-radius: 20%;
+}
+
+.pauseBtn {
+  width: 16px;
+  height: 16px;
+  background: #B5B5B5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px; /*高的一半*/
+  margin-left: -8px; /*宽的一半*/
+  text-align: center;
+  border-radius: 10%;
+}
+
+.playerControl1 {
+  background-color: #d8dbdd;
+  margin: 0 auto;
+  padding: 10px;
+  width: 90%;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.playerControl2 {
+  position: relative;
+  margin: 0 auto;
+  width: 68%;
+  height: 50px;
+}
+
+.playerControl {
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+.lrc_font {
+  color: #525252;
+  text-shadow: 1px -1px 0 rgb(235, 225, 225),
+                 -1px 2px 1px rgb(235, 225, 225)
+                
+}
+.flower{
+  background-color:#EBEBEB;
+  margin-left:10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+.thumbsUp{
+  background-color:#EBEBEB;
+  margin-left:10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+.dy_head{
+  width: 30px;
+  height: 30px;
+  border-radius:50%;
+   -webkit-border-radius:50%;
+   -moz-border-radius:50%;
+  border: 1px solid #A83A3A;
+  vertical-align: middle;
+}
+.dy_user{
+  border-radius:10px;
+  color: #707070;
+  padding:5px 10px;
+  vertical-align: middle;
+}
+.dy_area{
+  margin-top: 10px;
+  padding: 10px;
+}

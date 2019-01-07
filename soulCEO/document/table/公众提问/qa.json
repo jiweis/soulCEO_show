@@ -1,0 +1,14 @@
+{
+    "home_id":"",
+    "question_title":"",
+    "question_user_id":"",
+    "question_nick_name":"",
+    "question_avatar_url":"",
+    "answer_url":"",//回答的语音url
+    "answer_user_id":"",
+    "answer_nick_name":"",
+    "answer_avatar_url":"",
+    "date_answer":null,
+    "date_add":null,
+    "home_user_id":""
+}

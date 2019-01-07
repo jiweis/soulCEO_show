@@ -1,0 +1,22 @@
+
+<view class="page">
+<view><text>{{themeInfo.title}}</text>
+</view>
+<view><button class="weui-btn mini-btn" type="default" size="mini" bindtap='add'>添加题目</button></view>
+    <view class="page__bd">
+        <view class="weui-form-preview" wx:for="{{question_list}}">
+            
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                 <view class="weui-form-preview__label" style="color:red">{{item.only_user_remark}}</view>
+                    <view class="weui-form-preview__value">{{item.question_title}}</view>
+                </view>
+            </view>
+            
+            <view class="weui-form-preview__ft">
+            <view bindtap='del' data-id="{{item._id}}" data-index="{{index}}"  class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">删除</view>
+               
+            </view>
+        </view>
+    </view>
+</view>

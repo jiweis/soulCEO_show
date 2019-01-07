@@ -1,0 +1,5 @@
+<!--miniprogram/pages/programmer/ml/myMl/ml/ml.wxml-->
+<view class='showArea'>
+<rich-text nodes="{{ml.html}}" bindtap='tap'></rich-text>
+</view>
+

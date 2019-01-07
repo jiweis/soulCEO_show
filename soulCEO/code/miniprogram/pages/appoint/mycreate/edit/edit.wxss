@@ -1,0 +1,69 @@
+/* miniprogram/pages/appoint/mycreate/edit/edit.wxss */
+
+.weui-cell_r {
+  padding: 5px;
+}
+.oneappoint{
+  margin-top: 10px;
+}
+.r_input {
+  border: 1px solid #999;
+  height: 2.38823529em;
+  min-height: 2.58823529em;
+  line-height: 2.58823529em;
+  padding:0 10px;
+  width: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.onea-label{
+  word-wrap:break-word;
+  word-break:break-all;
+}
+.tmpBox{
+  width: 559rpx;
+  /* height: 430rpx; */
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+.tmpBox-title{
+  line-height: 96rpx;
+  height: 96rpx;
+  text-align: center;
+  position: relative;
+  /* margin-top: 24rpx; */
+   font-size: 36rpx;
+   color: #000;
+   border-bottom:1px solid #e0e0e0;
+}
+.closeBox{
+  width: 85rpx;
+  height: 98rpx;
+  float: right;
+  top:0rpx;
+  left: 0;
+}
+.close-img{
+  width: 20px;
+  height: 20px;
+}
+.tmpBox-main{
+  height:420rpx;
+  width: 100%;
+  position: relative;
+  overflow-y: scroll;
+  padding-bottom: 100rpx;
+}
+.tmpBox-info{
+  padding:30rpx;
+}
+.text-ellipsis{
+  width: 90px;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}

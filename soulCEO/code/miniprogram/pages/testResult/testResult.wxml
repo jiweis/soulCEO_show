@@ -1,0 +1,36 @@
+<!--miniprogram/pages/testResult/testResult.wxml-->
+<view class='page page-backcolor-{{ranColor.idx}}"'>
+  <view class='page-content page-backcolor2-{{ranColor.idx}}' bindtap='changeoper'>
+    <view class='avatarview'>
+      <image src="{{user.avatarUrl}}" class="avatar"></image>
+    </view>
+    <view wx:for="{{record.tags}}" class='tags'>
+      <view class='tag'>{{item.title}}</view>
+    </view>
+    <view class='clearboth'></view>
+    <view class='desc'>{{record.Desc}}</view>
+    <view wx:if="{{system_para.isOpenAcode}}" class='qrcode' bindtap='changeoper'>
+      <view wx:if="{{acode}}" bindtap='showacode'>
+        <image binderror="acodeError" style='width:60px;height:60px' mode="aspectFit" src='{{acode}}'></image>
+        <text style='margin-left:10px'>长按识别小程序进行测试</text>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='oper' style="{{opershow?'':'display:none'}}">
+
+    <view class='row'>
+      <text>你可以保存你的测试到相册...</text>
+      <button class="weui-btn mini-btn btn_oper page-backcolor2-{{ranColor.idx}}" size="mini" bindtap='save'>保存</button>
+    </view>
+    <view class='row'>
+      <text>你还可以分享给好友玩玩...</text>
+      <button class="weui-btn mini-btn btn_oper page-backcolor2-{{ranColor.idx}}" open-type="share" size="mini">分享</button>
+    </view>
+
+  </view>
+  <view class="weui-footer weui-footer_fixed-bottom" style="{{opershow?'':'display:none'}}">
+    <view class="weui-footer__text">测试结果仅供参考</view>
+  </view>
+</view>

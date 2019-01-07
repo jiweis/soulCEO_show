@@ -1,0 +1,36 @@
+<!--miniprogram/pages/manage/tags/edit/edit.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__hd">
+    <view class="page__title">Tag</view>
+    <view class="page__desc">{{o_type}}</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{showTopTips}}</view>
+    <form bindsubmit="save">
+
+      <view class="weui-cells__title">title</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入文本" name="title" value='{{tagInfo.title}}' />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">des</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入文本" name="des" value='{{tagInfo.des}}' style="height: 3.3em" />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-btn-area">
+        <button class="weui-btn" formType="submit">确定</button>
+      </view>
+    </form>
+
+
+  </view>
+</view>

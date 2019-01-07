@@ -1,0 +1,148 @@
+<!--miniprogram/pages/qa/myQa/index/index.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weina-tab__content" hidden="{{activeIndex != 0}}">
+          <!-- 本PO主 -->
+          <view style='margin-left:10px;margin-right:10px;'>
+            <button class="weui-btn" type="default" size="mini" bindtap='ShowEdit'>去添加我的PO主问答主页</button>
+          </view>
+          <view class="weui-form-preview wena-form-preview" wx:for="{{qa_homes}}">
+            <view class="weui-form-preview__hd">
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">标题</view>
+                <view class="weui-form-preview__value_in-hd">我问{{item.po_nick_name}}</view>
+              </view>
+            </view>
+            <view class="weui-form-preview__bd">
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">主页描述</view>
+                <view class="weui-form-preview__value">{{item.des}}</view>
+              </view>
+            </view>
+            <view class="weui-form-preview__ft">
+              <view class="weui-form-preview__btn weui-form-preview__btn_default" data-homeid="{{item._id}}" data-index="{{index}}" hover-class="weui-form-preview__btn_active" bindtap='ShowEdit'>修改</view>
+               <view class="weui-form-preview__btn weui-form-preview__btn_primary" data-homeid="{{item._id}}" data-index="{{index}}" hover-class="weui-form-preview__btn_active" bindtap='account'>配到公众号</view>
+              <view class="weui-form-preview__btn weui-form-preview__btn_primary" data-homeid="{{item._id}}" data-index="{{index}}" hover-class="weui-form-preview__btn_active" bindtap='ShowACode'>生成码</view>
+              <navigator url='/pages/qa/poQa/poQa/poQa?home_id={{item._id}}' class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">PO主页</navigator>
+            </view>
+          </view>
+
+        </view>
+        <view class="weina-tab__content" hidden="{{activeIndex != 1}}">
+          <!-- 待回答 -->
+          <view>
+            <view class="weui-form-preview wena-form-preview" wx:for="{{noAnswers}}">
+
+              <view class="weui-form-preview__bd">
+               <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">
+                    <text>提问时间：{{item.date_add_str}}</text>
+                  </view>
+ <view class="weui-form-preview__value" style="color:black"></view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">
+                    <text>{{item.question_nick_name}}</text>
+                  </view>
+ <view class="weui-form-preview__value" style="color:black">{{item.home_title}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">
+                    <image class='edit-head' src='{{item.question_avatar_url}}'></image>
+                  </view>
+                  <view class="weui-form-preview__value" style="color:black">{{item.question_title}}</view>
+                </view>
+              </view>
+              <view class="weui-form-preview__ft">
+                <navigator url='/pages/qa/myQa/qDetail/qDetail?qa_id={{item._id}}' class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">去回答</navigator>
+                <!-- <view class="weui-form-preview__btn weui-form-preview__btn_primary" data-id="{{item._id}}" data-index="{{index}}" hover-class="weui-form-preview__btn_active" bindtap='delpa'>删除</view> -->
+              </view>
+            </view>
+               <view><button class="weui-btn" type="default" bindtap='noAnswersNextPage'>更多</button></view>
+          </view>
+
+
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='mask' wx:if='{{tmpEditShow}}'>
+  <form report-submit="true" bindsubmit="saveHome">
+    <view class='tmpBox'> 
+      <view class='tmpBox-title'>
+        <view class='closeBox' bindtap="closeBox">
+          <image class='close-img' src='cloud://weina.35eb-weina/test/minione/ico/common/close-mask.png'></image>
+        </view>
+        {{editHomeid?'修改':"添加"}}PO主问答页
+      </view>
+      <view class='tmpBox-main'>
+        <view class='tmpBox-info'>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">主页头像</view>
+              </view>
+              <view class="weui-cell__bd" bindtap='choosehead'>
+                <image class='edit-head' src="{{editHome.po_avatar_url}}"></image>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">PO主名称</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="po_nick_name" placeholder="请输入文字" value='{{editHome.po_nick_name}}' />
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">PO主描述</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea class="weui-textarea" name="des" value='{{editHome.des}}' placeholder="请输入文本" style="height: 3.3em" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">回答者信息展示</view>
+          <view class="weui-cells weui-cells_after-title">
+            <radio-group bindchange="radioChange">
+              <label class="weui-cell weui-check__label">
+                <radio class="weui-check" value="1" checked="{{editHome.answerer_info_type==1}}" />
+
+                <view class="weui-cell__bd">po主的昵称和头像</view>
+                <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{editHome.answerer_info_type==1}}">
+                  <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                </view>
+              </label>
+              <label class="weui-cell weui-check__label">
+                <radio class="weui-check" value="2" checked="{{editHome.answerer_info_type==2}}" />
+
+                <view class="weui-cell__bd">回复者的微信昵称和头像</view>
+                <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{editHome.answerer_info_type==2}}">
+                  <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                </view>
+              </label>
+            </radio-group>
+          </view>
+
+        </view>
+        <view style='margin:10px;'>
+          <button class="weui-btn" formType="submit">保存</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>

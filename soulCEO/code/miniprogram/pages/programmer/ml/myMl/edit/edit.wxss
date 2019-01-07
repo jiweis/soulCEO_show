@@ -1,0 +1,9 @@
+/* miniprogram/pages/programmer/ml/myMl/edit/edit.wxss */
+.oper-btn{
+  margin: 10px;
+}
+.showArea{
+   margin: 10px;
+   padding: 10px;
+   background-color:white
+}

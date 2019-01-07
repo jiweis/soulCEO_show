@@ -1,0 +1,48 @@
+<movable-area style="height: {{screenHeight}}; width: 100%;" scale-area>
+  <view class="page">
+    <view class="page__bd">
+      <view>
+        <view class="weui-search-bar">
+          <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input type="text" class="weui-search-bar__input" placeholder="搜一搜" />
+
+            </view>
+            <label class="weui-search-bar__label" bindtap="soso">
+              <icon class="weui-icon-search" type="search" size="14"></icon>
+              <view class="weui-search-bar__text">搜索</view>
+            </label>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{update}}" bindtap='toUpdate' class='update'><icon type="success" size="23"></icon> 有新版本可用，点击重启使用。</view>
+      <view class="weui-grids">
+        <view class="weui-grid" hover-class="weui-grid_active" bindtap='appointCheck'>
+          <image class="weui-grid__icon" src="cloud://weina.35eb-weina/test/minione/ico/appoint/appoint.png" />
+          <view class="weui-grid__label">预约工具</view>
+        </view>
+        <view wx:for="{{system_para.menus}}">
+          <navigator url="{{item.url}}" wx:if="{{item.is_show}}" class="weui-grid" hover-class="weui-grid_active">
+            <image class="weui-grid__icon" src="{{item.ico}}" />
+            <view class="weui-grid__label">{{item.title}}</view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-panel__hd" wx:if="{{system_para.show_mytools&&mytools.length>0}}">最近使用</view>
+      <view class='weui-grids' wx:if="{{system_para.show_mytools}}">
+        <view wx:for="{{mytools}}">
+          <navigator url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
+            <image class="weui-grid__icon" src="{{item.ico}}" />
+            <view class="weui-grid__label">{{item.title}}</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <movable-view wx:if="{{bgmObj.src}}" style="height: 30px; width: 160px;color:white; background: #87CEFF;border-radius:10px;box-shadow: 3px 3px 1px #C6E2FF;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:2px" x="200" y="150" out-of-bounds="true"
+    direction="all" bindtap='goMusic'>♪{{bgmObj.title}}
+  </movable-view>
+</movable-area>

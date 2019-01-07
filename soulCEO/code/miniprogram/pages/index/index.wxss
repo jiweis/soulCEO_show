@@ -1,0 +1,6 @@
+/**index.wxss**/
+.update{
+  color: #44B549;
+  margin-left: 5px;
+  padding: 5px;
+}

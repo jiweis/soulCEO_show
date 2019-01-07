@@ -1,0 +1,87 @@
+<!--miniprogram/pages/qa/poQa/poQa/poQa.wxml-->
+<view class='page'>
+  <view class="page__bd" wx:if="{{!homeInfo._id}}">
+    <view class="weui-loadmore weui-loadmore_line">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无内容</view>
+    </view>
+  </view>
+  <view class="page__bd" wx:if="{{homeInfo._id}}">
+
+    <view class="weui-panel weui-panel_access" style='background-color:#F5F5F5'>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{homeInfo.po_avatar_url}}" style='border: 1px solid #C2C2C2;' />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">{{homeInfo.po_nick_name}}
+            </view>
+            <view class="weui-media-box__desc">{{homeInfo.des}}</view>
+          </view>
+
+          <image wx:if="{{homeInfo.acode_fileid}}" style='width:50px;height:50px' src='{{homeInfo.acode_fileid}}'></image>
+        </view>
+
+      </view>
+    </view>
+    <form report-submit="true" bindsubmit="toQ">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="在这里写问题向 {{homeInfo.po_nick_name}} 提问哦" maxlength="{{q_all_len}}" auto-height="true" bindinput="qChange" value='{{thisQTitle}}' />
+            <view class="weui-textarea-counter">{{q_this_len}}/{{q_all_len}}</view>
+          </view>
+        </view>
+
+
+      </view>
+      <view class="weui-cells__title">
+        <button style='float:right;' class="weui-btn mini-btn" size="mini" formType="submit">提交问题</button>
+      </view>
+    </form>
+
+    <view style="clear:both"></view>
+    <view class="weui-cells__title">以往问答</view>
+
+    <view class="container">
+
+      <view class="content chat-block" tabindex="0">
+        <view wx:for="{{QAs}}">
+          <view class="jimi_lists clearfix">
+            <view class="header_img jimi3 fl">
+              <image class='jimi3' src='{{item.question_avatar_url}}'></image>
+            </view>
+            <view class="bkbubble right">
+              <view class='p'>{{item.question_title}}</view>
+            </view>
+          </view>
+          <view class="customer_lists clearfix">
+            <view class="header_img jimi3">
+              <image class='jimi3' src='{{homeInfo.answerer_info_type==1?homeInfo.po_avatar_url:item.answer_avatar_url}}'></image>
+
+              <view class="header_img_hover"></view>
+            </view>
+            <view class="bkbubble left">
+              <view wx:if="{{item.answer_url}}">
+                <text wx:if="{{item.answer_duration}}" style="color:gray">{{item.answer_duration}}''</text>
+                <view class='p' data-index="{{index}}" bindtap='toPlay'>
+                  <text wx:if="{{playAudio.index==index&&playAudio.stat==1}}" style='margin-left:15.97px' class='weui-loading'></text>
+                  <text wx:if="{{playAudio.index!=index||playAudio.stat!=1}}" style='padding-left:{{playAudio.index==index?playAudio.padd:0}}px'>{{playAudio.index==index?playAudio.playtext:playAudio.text}}</text>
+                </view>
+              </view>
+              <view wx:if="{{item.answer_text}}">
+                <view class='p' wx:if="{{item.answer_text}}">{{item.answer_text}}</view>
+              </view>
+
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <view style='text-align:center'>
+      <button class="weui-btn mini-btn" bindtap='getmore' type="default" size="mini">点击加载更多</button>
+    </view>
+  </view>
+</view>

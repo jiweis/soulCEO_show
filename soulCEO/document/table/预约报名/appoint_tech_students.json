@@ -1,0 +1,6 @@
+{//用户报名提交信息的时候保存下来 以便下次不用再次提供信息
+    "tech_user_id":0,
+    "user_id":0,
+    "user_real_name":"",
+    "user_mobile":""
+}

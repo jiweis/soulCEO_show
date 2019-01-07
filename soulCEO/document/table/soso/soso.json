@@ -1,0 +1,9 @@
+{
+    "tags":"",//搜索标签 多个逗号隔开
+    "content":"",//内容
+    "path_url":"",//小程序地址
+    "date_add":"",
+    "date_update":"",
+    "img_url":""
+
+}

@@ -1,0 +1,6 @@
+/* miniprogram/pages/question/question.wxss */
+.q_title{
+  color: black;
+  font-size:22px;
+  font-weight: bold;
+}

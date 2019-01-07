@@ -1,0 +1,141 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"appid": "wx37f58acd26c84c60",
+	"projectname": "minip_jiweifong",
+	"libVersion": "2.3.1",
+	"compileType": "miniprogram",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 16,
+			"list": [
+				{
+					"id": -1,
+					"name": "db guide",
+					"pathName": "pages/databaseGuide/databaseGuide",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "question_edit",
+					"pathName": "pages/manage/question/edit/edit",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "testResult",
+					"pathName": "pages/testResult/testResult",
+					"query": "record_id=W8VsxZ25dhqgNPtC"
+				},
+				{
+					"id": -1,
+					"name": "question_edit",
+					"pathName": "pages/manage/question/edit/edit",
+					"query": "id=W5d5FEayzVW8ch8g"
+				},
+				{
+					"id": -1,
+					"name": "预约",
+					"pathName": "pages/appoint/mycreate/edit/edit",
+					"query": "appoint_type_id=W63yFtxKEB7Bj6sB"
+				},
+				{
+					"id": 5,
+					"name": "预约详情",
+					"pathName": "pages/appoint/myappoint/appoint/appoint",
+					"query": "id=W7DpMgpPd9R4sf6E"
+				},
+				{
+					"id": -1,
+					"name": "我创建的列表",
+					"pathName": "pages/appoint/mycreate/index/index",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "抢占",
+					"pathName": "pages/appoint/myappoint/occupy/occupy",
+					"query": "id=W7DpMgpPd9R4sf6E&slot_index=2&from_user_id=W7GDwt2AWotkUHzh"
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/testResult/testResult",
+					"query": "id=W7DpMgpPd9R4sf6E&slot_index=2&from_user_id=W7GDwt2AWotkUHzh"
+				},
+				{
+					"id": 9,
+					"name": "主题详情",
+					"pathName": "pages/themeDetail/themeDetail",
+					"query": "scene=4ad0312ad70ded5682b8766af2fe466e",
+					"scene": "1012"
+				},
+				{
+					"id": -1,
+					"name": "主题题目管理",
+					"pathName": "pages/manage/question/theme/themes/questionManage/questionManage",
+					"query": "theme_id=W5d-8fz9ollQSSyu",
+					"scene": "1012"
+				},
+				{
+					"id": -1,
+					"name": "PO主问答",
+					"pathName": "pages/qa/myQa/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "PO主页",
+					"pathName": "pages/qa/poQa/poQa/poQa",
+					"query": "home_id=W8MJoJ25dhqgJ8ST"
+				},
+				{
+					"id": 13,
+					"name": "PO主问题详情",
+					"pathName": "pages/qa/myQa/qDetail/qDetail",
+					"query": "qa_id=W9fl4pL-scb2Xpiu"
+				},
+				{
+					"id": -1,
+					"name": "myMl",
+					"pathName": "pages/programmer/ml/myMl/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/themeDetail/themeDetail",
+					"query": "id=W8V-8p25dhqgNS6g"
+				},
+				{
+					"id": 16,
+					"name": "听歌",
+					"pathName": "pages/game/music/player/player",
+					"query": ""
+				}
+			]
+		}
+	}
+}

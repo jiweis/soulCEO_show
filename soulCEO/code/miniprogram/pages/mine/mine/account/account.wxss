@@ -1,0 +1,35 @@
+/* miniprogram/pages/mine/mine/account/account.wxss */
+.head{
+  text-align: center;
+  height: 180rpx;
+   width: 100%;
+   display: flex;
+    position: relative;
+    background-color: white;
+}
+.user-head{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  border: 4rpx solid #B22222;
+  overflow: hidden;
+  position: absolute;
+  top: 20rpx;
+  left: 32rpx;
+}
+.user-txt{
+  position: absolute;
+  top: 85rpx;
+  left: 200rpx;
+}
+.flowerView{
+  margin: 20px;
+}
+.flowerNum{
+  color: #B22222
+}
+.flowerArea{
+  background-color: #EBEBEB;
+  border-radius: 10px;
+  padding: 20px;
+}

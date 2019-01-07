@@ -1,0 +1,10 @@
+/* miniprogram/pages/appoint/mycreate/index/index.wxss */
+.weui-form-preview{
+    margin-bottom: 25px;
+}
+.right{
+  float: right;
+}
+.title{
+  color: black;
+}

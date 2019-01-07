@@ -1,0 +1,9 @@
+{
+    "type":1,//1:点赞
+    "user_id":"",
+    "user_name":"",
+    "user_avatar":"",
+    "content":"",
+    "date_add":"",
+    "date_update":""
+}

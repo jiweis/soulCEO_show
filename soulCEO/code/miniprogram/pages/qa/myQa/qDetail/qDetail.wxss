@@ -1,0 +1,209 @@
+.content {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-right: -18px;
+  outline: 0;
+  width: 100%;
+  background-color: #eff0f2;
+  padding-top: 10px;
+}
+
+/*图片气泡*/
+
+.jimi_lists {
+  margin: 0 -10px 20px 10px;
+  position: relative;
+}
+
+.jimi_lists .header_img .jimi3 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid #C2C2C2;
+}
+
+.jimi_lists .header_img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.customer_lists {
+  position: relative;
+  margin: 0 12px 20px 20px;
+}
+
+.customer_lists .header_img_hover {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.customer_lists .header_img {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  width: 50px;
+  height: 50px;
+}
+
+.clearfix:after {
+  content: " .";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+}
+
+/*背景气泡*/
+
+.bkbubble .p {
+  color: white;
+  display: inline-block;
+  padding: 12px;
+  margin: 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.bkbubble.right .p {
+  margin-left: 80px;
+  background-color: #8d43ca;
+}
+
+.bkbubble.left .p {
+  margin-right: 80px;
+  background-color: #00bfff;
+}
+
+.bkbubble.right .p:before, .bkbubble.left .p:before {
+  width: 0;
+  position: absolute;
+  top: 12px;
+  border-style: solid;
+  content: "";
+}
+
+.bkbubble.left {
+  text-align: right;
+}
+
+.bkbubble.right .p:before {
+  left: -12px;
+  border-color: transparent #8d43ca;
+  border-width: 0 12px 12px 0;
+}
+
+.bkbubble.left .p:before {
+  right: -12px;
+  border-color: transparent #00bfff;
+  border-width: 0 0 12px 12px;
+}
+.tipsArea{
+  margin: 0 auto;
+  text-align: center;
+}
+.answerArea {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid #EBEBEB;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  position: relative;
+}
+
+.recordTips {
+  color: gray;
+}
+
+.recordBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -40px; /*高的一半*/
+  margin-left: -40px; /*宽的一半*/
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  background-color: red;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+.playPBtn{
+ /*  border: 2px solid black;
+  width: 60px;
+  height: 60px;
+ position: absolute;
+  top: 50%;
+  left: 50%; */
+  /*margin-top: -30px; /*高的一半*/
+  /*margin-left: -30px; /*宽的一半*/
+  /* text-align: center;
+  border-radius: 10%; */
+
+  width: 0;
+height: 0;
+border-style: solid;
+border-width: 25px 0 25px 43.3px;
+border-color: transparent transparent transparent #00a6ff;
+
+position: absolute;
+  top: 45%;
+  left: 55%;
+  margin-top: -20px; /*高的一半*/
+  margin-left: -20px; /*宽的一半*/
+  text-align: center;
+  border-radius: 20%;
+
+}
+/* .playBtn{
+    width:0;
+    height:0;
+    border-width:30px 0 30px 30px;
+    border-style:solid;
+    border-color:transparent transparent transparent #6495ED;
+    border-radius: 50%;
+    margin:0 auto;
+    position:relative;
+}
+.playBtn span{
+    display:block;
+    width:0;
+    height:0;
+    border-width:28px 0 28px 28px;
+    border-style:solid;
+    border-color:transparent transparent transparent #6495ED;
+    position:absolute;
+    top:-28px;
+    left:-29px;
+}
+ */
+
+.pauseBtn {
+  width: 40px;
+  height: 40px;
+  background: #00a6ff;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px; /*高的一半*/
+  margin-left: -20px; /*宽的一半*/
+  text-align: center;
+  border-radius: 10%;
+}
+.setanswer{
+  margin: 10px;
+}

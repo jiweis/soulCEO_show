@@ -1,0 +1,32 @@
+<!--miniprogram/pages/mine/mine/account/account.wxml-->
+<view class="page">
+  <view class="head">
+    <view class="user-head">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="user-txt">
+      <open-data type="userNickName"></open-data>
+    </view>
+  </view>
+  <view class="page__bd">
+    <view class='flowerView'>
+      <view class='flowerArea'>🌹：
+        <label class='flowerNum'>{{UserAccount.flower_num?UserAccount.flower_num:0}}</label>朵</view>
+    </view>
+    <view class="weui-cells__title">每天都可以领取鲜花哦</view>
+
+    <view class='flowerView' wx:if="{{!GotFlower}}">
+      <view class='flowerArea'>
+        <label style='color:gray;'> 今天可领取🌹：
+          <label class='flowerNum'>{{system_para.flower_num_everyday}}</label>朵 </label>
+        <button class="weui-btn mini-btn" size="mini" bindtap='getFlower'>点击领取</button>
+      </view>
+    </view>
+
+     <view class='flowerView' wx:if="{{GotFlower}}">
+      <view class='flowerArea'>
+        <label style='color:gray;'> 你今天已经领了哦，明天再来吧哈。 </label>
+      </view>
+    </view>
+  </view>
+</view>

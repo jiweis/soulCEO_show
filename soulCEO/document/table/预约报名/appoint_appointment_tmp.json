@@ -1,0 +1,64 @@
+{
+    "appoint_type_id":"W63yFtxKEB7Bj6sB",
+    "appoint_name":"科目二香蜜湖练车",
+    "date":"2018-10-03",//日期
+    "remark":"",
+    "slot":[{
+        "date_begin":"09:00",
+        "date_end":"10:00"
+        
+    },
+    {
+        "date_begin":"10:00",
+        "date_end":"11:00"
+        
+    },
+    {
+        "date_begin":"11:00",
+        "date_end":"12:00"
+        
+    },
+    {
+        "date_begin":"12:00",
+        "date_end":"13:00"
+        
+    },
+    {
+        "date_begin":"13:00",
+        "date_end":"14:00"
+        
+    },
+    {
+        "date_begin":"14:00",
+        "date_end":"15:00"
+        
+    },
+    {
+        "date_begin":"15:00",
+        "date_end":"16:00"
+        
+    },
+    {
+        "date_begin":"16:00",
+        "date_end":"17:00"
+        
+    },
+    {
+        "date_begin":"17:00",
+        "date_end":"18:00"
+        
+    }],
+    "appoint_user_info":{
+        "user_id":"",
+        "avatar_url":"",
+        "nick_name":"",
+        "real_name":""
+    },
+    "setting":{
+        "one_times":1,//每人能预约几个时间段
+        "reserve_info":{//希望预约者提供的信息
+           "is_real_name":true,
+           "is_mobile":false
+        }
+    }
+}

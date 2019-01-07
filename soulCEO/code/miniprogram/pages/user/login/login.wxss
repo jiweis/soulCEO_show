@@ -1,0 +1,17 @@
+/* miniprogram/pages/user/login/login.wxss */
+.headview{
+  width:200rpx;
+  height:200rpx;
+ margin: 0 auto;
+ padding: 50rpx;
+}
+.headdata{
+ text-align:center;
+}
+.infoview{
+ margin: 0 auto;
+ text-align:center;
+}
+.btnview{
+  margin: 10px;
+}

@@ -1,0 +1,16 @@
+<!--miniprogram/pages/user/login/login.wxml-->
+<view class='headview'>
+  <open-data type="userAvatarUrl" class="headdata"></open-data>
+</view>
+<view class='infoview'>
+  <open-data type="userNickName"></open-data>
+  <text>授权登录后才能继续操作哦</text>
+</view>
+<!-- 需要使用 button 来授权登录 -->
+<view class='btnview'>
+  <view>
+    <button wx:if="{{canIUse}}" type='primary' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+
+    <view wx:else>请升级微信版本</view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<!--miniprogram/pages/programmer/ml/myMl/edit/edit.wxml-->
+<form report-submit="true" bindsubmit="save">
+  <view class="weui-cells__title">标题</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入标题" name="title" value='{{ml.title}}' auto-focus="true" />
+      </view>
+    </view>
+  </view>
+   <view wx:if="{{ismanage}}" class="weui-cells__title">地址</view>
+  <view wx:if="{{ismanage}}" class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入地址" name="nav_url" value='{{ml.nav_url}}' />
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">输入hmtl文本</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" name="html" placeholder="请输入html" auto-height="true" bindinput="edit" value='{{ml.html}}' />
+      </view>
+    </view>
+  </view>
+
+  <view style="margin:20px">
+    <button class="weui-btn mini-btn oper-btn" size="mini" formType="submit">保存</button>
+    <button class="weui-btn mini-btn oper-btn" type="default" bindtap='show' size="mini">预览</button>
+  </view>
+
+</form>
+
+
+<view class='showArea'>
+  <rich-text nodes="{{showHtml}}"></rich-text>
+</view>

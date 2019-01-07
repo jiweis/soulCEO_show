@@ -1,0 +1,47 @@
+<!--miniprogram/pages/mine/mine/index/index.wxml-->
+<view class="page">
+    <view class="head">
+        <view class="user-head"><open-data type="userAvatarUrl"></open-data></view>
+        <view class="user-txt" bindtap='manage'><open-data type="userNickName"></open-data></view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="/pages/mine/mine/account/account" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <!-- <image src="cloud://weina.35eb-weina/test/minione/ico/mine/myappoint.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image> -->
+                    <label style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;">🌹</label>
+                </view>
+                <view class="weui-cell__bd">{{UserAccount.flower_num?UserAccount.flower_num:0}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">免费领取</view>
+            </navigator>
+        </view>
+        <view class="weui-cells__title">预约</view>
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="/pages/appoint/myappoint/myappoints/myappoints" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="cloud://weina.35eb-weina/test/minione/ico/mine/myappoint.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">我预约的</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">我预约过的</view>
+            </navigator>
+            <navigator url="/pages/appoint/mycreate/index/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="cloud://weina.35eb-weina/test/minione/ico/mine/mycreateappoint.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">我发起的</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">我发起的预约</view>
+            </navigator>
+        </view>
+
+        <view class="weui-cells__title" wx:if="{{system_para.my_menus.length>0}}">其他</view>
+        <view class="weui-cells weui-cells_after-title" wx:if="{{system_para.my_menus.length>0}}">
+            <navigator wx:for="{{system_para.my_menus}}" url="{{item.url}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="{{item.ico}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">{{item.title}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{item.des}}</view>
+            </navigator>
+        </view>
+    </view>
+</view>

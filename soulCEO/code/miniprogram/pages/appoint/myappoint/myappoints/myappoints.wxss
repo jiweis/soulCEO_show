@@ -1,0 +1,7 @@
+/* miniprogram/pages/appoint/myappoint/myappoints/myappoints.wxss */
+.weui-form-preview{
+    margin-bottom: 25px;
+}
+.title{
+  color: black;
+}

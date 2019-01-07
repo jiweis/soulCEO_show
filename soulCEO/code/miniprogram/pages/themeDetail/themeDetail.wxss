@@ -1,0 +1,9 @@
+/* miniprogram/pages/themeDetail/themeDetail.wxss */
+page{
+  background-color: rgba(235, 220, 221, 0.932);
+}
+.btn-test{
+  background-color: #B22222;
+  border-color: #B22222;
+  color: #fff;
+}

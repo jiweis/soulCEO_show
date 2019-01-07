@@ -1,0 +1,33 @@
+{
+    "appoint_type_id":"",
+    "appoint_name":"练习",
+    "date":"2018-09-29",//日期 2018-09-29
+    "remark":"",
+    "slot":[{
+        "date_begin":"09:00",
+        "date_end":"10:00",
+        "reserve_info":{
+            "user_id":0,
+            "avatar_url":"",
+            "nick_name":"",
+            "real_name":"",
+            "mobile":"",    
+            "but_info":""
+        }
+        
+    }],
+    "appoint_user_info":{
+        "user_id":0,
+        "avatar_url":"",
+        "nick_name":"",
+        "real_name":""
+    },
+    "setting":{
+        "one_times":0,//每人能预约几个时间段
+        "reserve_info":{//希望预约者提供的信息
+           "is_real_name":true,
+           "is_mobile":true
+        }
+    },
+    "reserve_num":0 //预约人数
+}

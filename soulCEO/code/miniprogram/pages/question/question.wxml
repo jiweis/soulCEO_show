@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="page__bd">
+    <view wx:for="{{question_list}}" wx:for-item="que_item" wx:key="que_index" animation="{{animationData}}">
+      <view style="{{act_question_index==index?'':'display:none'}}">
+        <view class="weui-cells__title q_title">{{index+1}}、{{que_item.question_title}}</view>
+        <view class="weui-cells weui-cells_after-title">
+          <checkbox-group data-qindex="{{index}}" data-question_id="{{que_item.question_id}}" bindchange="optionChange">
+            <label class="weui-cell weui-check__label" wx:for="{{que_item.option}}" wx:for-item="op_item" wx:key="op_index">
+              <checkbox class="weui-check" value="{{index}}" checked="{{op_item.selected}}" />
+
+              <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!op_item.selected}}"></icon>
+                <icon class="weui-icon-checkbox_success" color="#B22222" type="success" size="23" wx:if="{{op_item.selected}}"></icon>
+              </view>
+              <view class="weui-cell__bd">{{op_item.code}}： {{op_item.title}}</view>
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

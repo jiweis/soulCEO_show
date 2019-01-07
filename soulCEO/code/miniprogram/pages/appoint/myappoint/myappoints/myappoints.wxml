@@ -1,0 +1,23 @@
+<!--miniprogram/pages/appoint/myappoint/myappoints/myappoints.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-form-preview" wx:for="{{appoint_records}}">
+
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">名称</view>
+          <view class="weui-form-preview__value title">{{item.appoint_name}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">时间</view>
+          <view class="weui-form-preview__value title">{{item.date}} {{item.date_begin}}-{{item.date_end}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
+      <view bindtap='del' data-id="{{item._id}}" data-index="{{index}}"  class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">删除</view>
+        <view bindtap='goAppoint' data-id="{{item.appoint_id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" style="color:#B22222">查看</view>
+      </view>
+    </view>
+    <button class="weui-btn" type="default" bindtap='lastPage'>下一页</button>
+  </view>
+</view>

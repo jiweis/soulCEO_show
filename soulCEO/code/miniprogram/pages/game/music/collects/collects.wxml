@@ -1,0 +1,20 @@
+<!--miniprogram/pages/game/music/collects/collects.wxml-->
+
+<view class="page">
+  <view class="page__bd" style='margin-top:10px;'>
+
+        <view class="weui-loadmore weui-loadmore_line" wx:if="{{collects.length==0}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">你没有收藏更多的声音哦</view>
+        </view>
+
+        <view class="weui-cells weui-cells_after-title">
+            <navigator wx:for="{{collects}}" url="/pages/game/music/player/player?id={{item.radio_item_id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">{{item.radio_title}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+
+        
+    <button class="weui-btn" type="default" bindtap='lastPage'>下一页</button>
+  </view>
+</view>

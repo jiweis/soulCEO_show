@@ -1,0 +1,84 @@
+<view class='page'>
+  <view class="page__bd">
+    <view class="container">
+
+      <view class="content chat-block" tabindex="0">
+        <view>
+          <view class="jimi_lists clearfix">
+            <view class="header_img jimi3 fl">
+              <image class='jimi3' src='{{qaInfo.question_avatar_url}}'></image>
+            </view>
+            <view class="bkbubble right">
+              <view class='p'>{{qaInfo.question_title}}</view>
+            </view>
+          </view>
+          <view class="customer_lists clearfix" wx:if="{{qaInfo.answer_url||qaInfo.answer_text}}">
+            <view class="header_img jimi3" style="background: url({{qaInfo.answer_avatar_url}}) no-repeat center;background-size:50px;border-radius: 50px;">
+              <view class="header_img_hover"></view>
+            </view>
+            <view class="bkbubble left">
+            <view class='p' wx:if="{{qaInfo.answer_text}}">{{qaInfo.answer_text}}</view>
+              <view class='p' wx:if="{{qaInfo.answer_url}}" bindtap='playAnswer'>
+                <text wx:if="{{playAudio.playType=='show'&&playAudio.stat==1}}" style='margin-left:15.97px' class='weui-loading'></text>
+                <text wx:if="{{playAudio.playType!='show'||playAudio.stat!=1}}" style="padding-left:{{playAudio.playType=='show'?playAudio.show.padd:0}}px">{{playAudio.playType=='show'?playAudio.show.playtext:playAudio.show.text}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <view wx:if="{{(!qaInfo.answer_user_id)&&qaInfo.home_user_id==user.user_id}}" style='margin-top:15px'>
+
+      <view class='setanswer'>
+        <button class="weui-btn mini-btn" bindtap='cutAnswerType' type="default" size="mini">{{answerType==1?'文字回答':'语音回答'}}</button>
+      </view>
+      <view wx:if="{{answerType==1}}">
+        <view class='tipsArea'>
+          <view class="{{recordState==1?'recordTips':(recordState==2?'recordTips':'recordTips')}}">
+            <text>{{recordState==1?'正在录音':(recordState==2?'点击播放':(recordState==3?'点击停止播放':'点击录音'))}}</text>
+          </view>
+        </view>
+        <view class='answerArea'>
+          <view wx:if="{{recordState!=2}}" class="{{recordState==1||recordState==3?'pauseBtn':'recordBtn'}}" bindtap='record'></view>
+          <view class='playPBtn' bindtap='record' wx:else>
+            <!-- <view class="playBtn">
+    <span></span>
+</view> --></view>
+        </view>
+
+        <view wx:if="{{(!qaInfo.answer_url)&&qaInfo.home_user_id==user.user_id&&(recordState==2||recordState==3)}}" style='text-align:center'>
+          <form report-submit="true" bindsubmit="finish">
+            <button class="weui-btn mini-btn" type="default" size="mini" bindtap='rerecord' style='margin-right:10px'>取消</button>
+            <button class="weui-btn mini-btn" size="mini" formType="submit" style='margin-left:10px'>完成回答</button>
+          </form>
+        </view>
+      </view>
+
+      <view wx:if="{{answerType==2}}">
+      <form report-submit="true" bindsubmit="finish">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="在这里输入文字进行回答" maxlength="{{q_all_len}}" auto-height="true" bindinput="aChange" value='{{qaInfo.answer_text}}' />
+        <view class="weui-textarea-counter">{{q_this_len}}/{{q_all_len}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells__title">
+        <button style='float:right;' class="weui-btn mini-btn" size="mini" formType="submit">完成回答</button>
+      </view>
+    </form>
+       <view style="clear:both"></view>
+      </view>
+    </view>
+
+
+    <view style='text-align:center;margin-top:30px'>
+      <navigator style="background-color:#8B3626;border-radius: 5px;margin:0 auto;width:100px;color:white;text-align:center;padding:5px;" url='/pages/qa/poQa/poQa/poQa?home_id={{qaInfo.home_id}}'>{{qaInfo.home_title}}</navigator>
+    </view>
+    <view wx:if="{{qaInfo.home_user_id==user.user_id}}" style='text-align:center;margin-top:10px'>
+      <navigator style="background-color:#4D4D4D;border-radius: 5px;margin:0 auto;width:100px;color:white;text-align:center;padding:5px;" url='/pages/qa/myQa/index/index'>更多待回答</navigator>
+    </view>
+  </view>
+</view>

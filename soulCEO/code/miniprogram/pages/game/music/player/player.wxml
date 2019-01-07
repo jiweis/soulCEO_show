@@ -1,0 +1,56 @@
+<!--miniprogram/pages/game/music/player/player.wxml-->
+<view class='content'>
+  <view class='itemcover'>
+    <image animation="{{animationData}}" class='itemcoverimg' mode="aspectFit" src="{{radio.cover_img_url}}"></image>
+  </view>
+  <view>
+  <view class='lrc_hr lrc_font'>{{radio.title}}</view>
+  <view class='lrc_hr lrc_font'>{{radio.author}}</view>
+    <view class='lrc_hr lrc_font'>{{lrc_hr}}</view>
+  </view>
+</view>
+
+<view class='playerControl1'>
+  <view class='playerControl2'>
+
+
+    <view class='playerControl'>
+      <view class='flower' bindtap='toflower'>
+        <label>🌹
+          <label>送花</label>
+        </label>
+      </view>
+    </view>
+    <view class='playerControl' style='margin-left:10px'>
+      <view class='radioBtnDiv' bindtap='play'>
+        <view wx:if="{{playState==1}}" class="pauseBtn"></view>
+        <view class='playPBtn' wx:else></view>
+      </view>
+    </view>
+    <view class='playerControl'>
+      <view class='thumbsUp' bindtap='thumbsUp'>
+        <!-- <image bindtap='thumbsUp' style='width:29px;height:24px;' src='cloud://weina.35eb-weina/test/minione/ico/music/thumbsUp.png'></image> -->
+
+        <view>
+          <label>👍
+            <label>{{radio.thumbs_num>99?'99+':radio.thumbs_num}}</label>
+          </label>
+        </view>
+      </view>
+
+
+    </view>
+    <view class='clear'></view>
+  </view>
+</view>
+<view class='dy_area'>
+  <view wx:for="{{radio_dynamics}}" style='padding:5px;'>
+    <view>
+      <image class='dy_head' src='{{item.user_avatar}}'></image>
+      <text class='dy_user'> {{item.content}}</text>
+    </view>
+  </view>
+  <view style='text-align:center'>
+    <button class="weui-btn mini-btn" style='color:gray' bindtap='getmore' type="default" size="mini">更多</button>
+  </view>
+</view>

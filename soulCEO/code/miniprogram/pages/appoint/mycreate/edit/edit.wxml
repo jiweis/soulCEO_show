@@ -1,0 +1,182 @@
+<!--miniprogram/pages/appoint/mycreate/edit/edit.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+    <view class='weui-cells__title'>
+    <image style='width:28px;height:28px;margin-right:5px' src="{{appoint_type.type==1?'cloud://weina.35eb-weina/test/minione/ico/appoint/carappoint.png':'cloud://weina.35eb-weina/test/minione/ico/appoint/classappoint.png'}}" />
+      <button class="weui-btn mini-btn" type="default" bindtap='showTmps' size="mini">载入模板</button>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">预约名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入预约名称" value='{{appoint.appoint_name}}' bindinput='input_edit' data-field="appoint.appoint_name" />
+        </view>
+
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">预约日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{appoint.date}}" start="{{date_start}}" end="{{date_end}}" bindchange="bindDateChange">
+            <view class="weui-input">{{appoint.date?appoint.date:'点击选择'}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">{{appoint_type.tech_name}}昵称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入{{appoint_type.stu_name}}对你的称呼" value='{{appoint.appoint_user_info.real_name}}' bindinput='input_edit' data-field="appoint.appoint_user_info.real_name" />
+        </view>
+
+      </view>
+    </view>
+    <view class="weui-cells__title">说明(填写一些说明、描述或公告内容等...)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入说明内容" style="height: 3.3em" value='{{appoint.remark}}' bindinput='input_edit' data-field="appoint.remark" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">时间段(填了不参与原因的时间段将无法预约)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <template is="tmp_slot" data="{{...appoint}}" />
+      <view class="weui-cell weui-cell_link">
+        <view class="weui-cell__bd" bindtap='addSlot'>添加更多时间段</view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">希望预约者提供的信息(多选)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="weui-cell weui-check__label">
+          <checkbox class="weui-check" value="1" checked="{{appoint.setting.reserve_info.is_real_name}}" />
+
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!appoint.setting.reserve_info.is_real_name}}"></icon>
+            <icon class="weui-icon-checkbox_success" color="#B22222" type="success" wx:if="{{appoint.setting.reserve_info.is_real_name}}" size="23"></icon>
+          </view>
+          <view class="weui-cell__bd">真实姓名</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <checkbox class="weui-check" value="2" checked="{{appoint.setting.reserve_info.is_mobile}}" />
+
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!appoint.setting.reserve_info.is_mobile}}"></icon>
+            <icon class="weui-icon-checkbox_success" color="#B22222" type="success" wx:if="{{appoint.setting.reserve_info.is_mobile}}" size="23"></icon>
+          </view>
+          <view class="weui-cell__bd">手机号</view>
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="weui-cell weui-cell_input oneappoint">
+      <view>
+        <view class="onea-label">每人能预约</view>
+      </view>
+      <view>
+        <input class="r_input" value='{{appoint.setting.one_times}}' type='number' bindinput='input_edit' data-field="appoint.setting.one_times" />
+      </view>
+      <view class="weui-cell_r">
+        <view class="onea-label">个时间段</view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">模板的保存方式(单选,便于下次直接载入模板)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <checkbox-group bindchange="saveTmpTypeChange">
+        <label class="weui-cell weui-check__label" wx:if="{{tmp._id&&tmp.appoint_user_info.user_id}}">
+          <checkbox class="weui-check" value="2" checked="{{save_tmp_type==2?true:false}}" />
+
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{save_tmp_type!=2}}"></icon>
+            <icon class="weui-icon-checkbox_success" color="#B22222" type="success" wx:if="{{save_tmp_type==2}}" size="23"></icon>
+          </view>
+          <view class="weui-cell__bd">覆盖原模板</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <checkbox class="weui-check" value="1" checked="{{save_tmp_type==1?true:false}}" />
+
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{save_tmp_type!=1}}"></icon>
+            <icon class="weui-icon-checkbox_success" color="#B22222" type="success" wx:if="{{save_tmp_type==1}}" size="23"></icon>
+          </view>
+          <view class="weui-cell__bd">保存为新模板</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <checkbox class="weui-check" value="0" checked="{{save_tmp_type==0}}" />
+
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{save_tmp_type!=0}}"></icon>
+            <icon class="weui-icon-checkbox_success" color="#B22222" type="success" wx:if="{{save_tmp_type==0}}" size="23"></icon>
+          </view>
+          <view class="weui-cell__bd">不保存模板</view>
+        </label>
+      </checkbox-group>
+    </view>
+
+    <view class="weui-btn-area">
+      <button class="weui-btn" bindtap="saveAppoint">确定</button>
+    </view>
+  </view>
+</view>
+
+<view class='mask' wx:if='{{tmpMskShow}}'>
+  <form>
+    <view class='tmpBox'>
+      <view class='tmpBox-title'>
+        <view class='closeBox' bindtap="closeBox">
+          <image class='close-img' src='cloud://weina.35eb-weina/test/minione/ico/common/close-mask.png'></image>
+        </view>
+        选择模板
+      </view>
+      <view class='tmpBox-main'>
+        <view class='tmpBox-info'>
+
+          <view class="weui-cells__title">载入一个模板方便快捷填写</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access" wx:for="{{tmps}}" wx:for-item="i" wx:for-index="idx">
+              <view class="weui-cell__bd text-ellipsis" bindtap='loadTmp' data-tmpid="{{i._id}}">{{i.appoint_name}}</view>
+              <view>
+                <icon type="download" color='#B22222' size="23" bindtap='loadTmp' data-tmpid="{{i._id}}"></icon>
+              </view>
+              <view wx:if="{{i.appoint_user_info.user_id}}" bindtap='delTmp' data-tmpid="{{i._id}}" data-tmpindex="{idx}">
+                <icon type="cancel" size="23"></icon>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+  </form>
+</view>
+
+<template name="tmp_slot">
+  <view class="weui-cell weui-cell_select" wx:for="{{slot}}">
+    <view class="weui-cell__hd" style="width: 80px">
+      <picker bindchange="bindTimeChange" mode="time" start="{{item.date_f_b?item.date_f_b:'00:00'}}" end="{{item.date_f_e?item.date_f_e:'23:59'}}" value="{{item.date_begin}}" data-field="date_begin" data-index="{{index}}">
+        <view class="weui-select">{{item.date_begin?item.date_begin:'从'}}</view>
+      </picker>
+    </view>
+    <view class="weui-cell__hd" style="width: 80px">
+      <picker bindchange="bindTimeChange" mode="time" start="{{item.date_t_b?item.date_t_b:'00:00'}}" end="{{item.date_t_e?item.date_t_e:'23:59'}}" value="{{item.date_end}}" data-field="date_end" data-index="{{index}}">
+        <view class="weui-select">{{item.date_end?item.date_end:'至'}}</view>
+      </picker>
+    </view>
+    <view class="weui-cell__bd weui-cell__bd_in-select-before">
+      <input class="weui-input" disabled="{{item.reserve_info.user_id?true:false}}" placeholder="选填不参与原因" value="{{item.reserve_info.but_info?item.reserve_info.but_info:item.reserve_info.real_name}}" bindinput='input_edit' data-field="appoint.slot[{{index}}].reserve_info.but_info"
+      />
+    </view>
+    <view class="weui-cell__hd" style='padding-right:8px' wx:if="{{index>0}}">
+      <icon type="cancel" data-index="{{index}}" bindtap='removeSlot' size="23"></icon>
+    </view>
+  </view>
+</template>

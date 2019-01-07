@@ -1,0 +1,94 @@
+<!--miniprogram/pages/manage/question/edit/edit.wxml-->
+<view class="page" style="{{selecttagview?'':'display:none'}}">
+  <view class="page__bd">
+    <view class="weui-cells__title">选择标签</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{systemTags}}" data-id="{{item._id}}" data-title="{{item.title}}" data-desc="{{item.des}}" bindtap='setthistag'>
+        <view class="weui-cell__bd">{{item.title}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{item.des}}</view>
+      </view>
+    </view>
+    <button class="weui-btn mini-btn" bindtap='switchView' size="mini">返回</button>
+  </view>
+</view>
+<view class="page" style="{{mainview?'':'display:none'}}" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__hd">
+    <view class="page__title">question edit</view>
+    <view class="page__desc">edit</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{submit_state.error_infos}}">{{submit_state.error_infos}}</view>
+
+    <form bindsubmit="save">
+      <view class="weui-cells__title">title</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入title" value='{{question_objs.title}}' bindinput='inputQTitle' style="height: 3.3em" />
+          </view>
+        </view>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="weui-cell weui-check__label" wx:for="{{SignUsers}}" wx:key="value">
+            <checkbox class="weui-check" value="{{item._id}}" checked="{{item.checked}}" />
+
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+            </view>
+            <view class="weui-cell__bd">{{item.nick_name}}（{{item.sign}}）</view>
+          </label>
+        </checkbox-group>
+      </view>
+      <template is="temp_option" data="{{...question_objs.option}}" />
+      <view class="weui-cell weui-cell_link">
+        <view class="weui-cell__bd" bindtap='option_add'>+选项</view>
+      </view>
+
+      <view class="weui-btn-area">
+        <button class="weui-btn" formType="submit">保存</button>
+      </view>
+      <view wx:if="{{submit_state.submit_num>0||submit_state.finish_num>0}}">
+        <text>{{submit_state.finish_num}} / {{submit_state.submit_num}}</text> </view>
+    </form>
+
+  </view>
+</view>
+
+<template name="temp_option">
+  <view wx:for="{{options}}" wx:for-index="oidx" wx:key="keyoption">
+    <view class="weui-cells__title">{{item.code}}
+      <button class="weui-btn mini-btn" type="warn" size="mini" data-optionid="{{item._id}}" bindtap='delOption'>删除{{item.code}}</button>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入选项" value='{{item.title}}' bindinput='inputOTitle' data-index="{{oidx}}" />
+        </view>
+      </view>
+      <template is="temp_tag" data="{{...item}}" />
+      <view class="weui-cell weui-cell_link">
+        <view class="weui-cell__bd" data-index="{{oidx}}" bindtap='tag_add'>+标签</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="temp_tag">
+  <view class="weui-cells__title">tags</view>
+  <view wx:for="{{tag.que_opt_tags}}" wx:for-index="tidx" wx:key="keytag">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">tag</view>
+        <view class="weui-cell__ft">{{item.title}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">desc</view>
+        <view class="weui-cell__ft">{{item.desc}}</view>
+      </view>
+      <view class="weui-cell">
+        <button class="weui-btn mini-btn" data-id="{{item._id}}" data-index="{{tidx}}" data-optionid="{{item.option_id}}" bindtap='delTags' type="warn" size="mini">删除{{item.title}}</button>
+      </view>
+    </view>
+  </view>
+
+</template>

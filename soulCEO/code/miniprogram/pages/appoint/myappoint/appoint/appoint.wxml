@@ -1,0 +1,134 @@
+<!--miniprogram/pages/appoint/myappoint/appoint/appoint.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class='tite-view'>
+      <text class='title'>{{appoint.date}} {{appoint.appoint_name}}</text>
+    </view>
+    <view>
+      <view class="jimi_lists clearfix">
+        <view class="header_img fl">
+          <image class='techhead' src='{{appoint.appoint_user_info.avatar_url}}'></image>
+        </view>
+        <view class="bkbubble right">
+          <text class='p'>{{appoint.remark}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='content-row'>
+      <text style='color:#00bfff'>{{appoint_type.tech_name}}：</text>
+      <text>{{appoint.appoint_user_info.nick_name}}{{appoint.appoint_user_info.real_name?'（'+appoint.appoint_user_info.real_name+'）':''}}</text>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell" wx:for="{{appoint.slot}}">
+        <view class="weui-cell__bd">
+          <text>{{item.date_begin}}-{{item.date_end}}</text>
+          <p class="reserve-view">
+            <text wx:if="{{item.reserve_info&&item.reserve_info.but_info}}" class='but_info' data-slot_index="{{index}}" bindtap='showReserveInfo'>{{item.reserve_info.but_info}}</text>
+
+            <text wx:elif="{{item.reserve_info&&item.reserve_info.user_id}}" class='reserve_user' data-slot_index="{{index}}" bindtap='showReserveInfo'>{{item.reserve_info.real_name?item.reserve_info.real_name:item.reserve_info.nick_name}}</text>
+            <text class='toorder' data-slot_index="{{index}}" bindtap='order' wx:else>预约</text>
+          </p>
+
+        </view>
+      </view>
+    </view>
+    <view class='content-row'>
+      <button open-type='share' data-type='1'>转发</button>
+    </view>
+
+  </view>
+</view>
+
+<view class='mask' wx:if='{{tmpMskShow}}'>
+  <form>
+    <view class='tmpBox'>
+      <view class='tmpBox-title'>
+        <view class='closeBox' bindtap="closeBox">
+          <image class='close-img' src='cloud://weina.35eb-weina/test/minione/ico/common/close-mask.png'></image>
+        </view>
+        首次预约需填写
+      </view>
+      <view class='tmpBox-main'>
+        <form bindsubmit="goOn">
+          <view class='tmpBox-info'>
+            <view>
+              <text>{{appoint_type.tech_name}}需要你提供{{appoint.setting.reserve_info.is_real_name?'真实姓名':''}}{{appoint.setting.reserve_info.is_mobile&&appoint.setting.reserve_info.is_real_name?'和':''}}{{appoint.setting.reserve_info.is_mobile?'手机号':''}},以便核对信息哟</text>
+            </view>
+            <view class="weui-cells weui-cells_after-title">
+
+              <view class="weui-cell weui-cell_input" wx:if="{{appoint.setting.reserve_info.is_real_name}}">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">真实姓名</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" name="real_name" placeholder="输入姓名" />
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input" wx:if="{{appoint.setting.reserve_info.is_mobile}}">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">手机号</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" name="mobile" placeholder="输入手机号" />
+                </view>
+              </view>
+
+            </view>
+
+          </view>
+          <view class='tmpBox-next-wrap'>
+            <button class='tmpBox-next' formType="submit">继续预约</button>
+          </view>
+        </form>
+      </view>
+    </view>
+  </form>
+</view>
+
+
+<view class='mask' wx:if='{{reserveInfoShow}}'>
+  <form>
+    <view class='tmpBox'>
+      <view class='tmpBox-title'>
+        <view class='closeBox' bindtap="closeReserveInfoBox">
+          <image class='close-img' src='cloud://weina.35eb-weina/test/minione/ico/common/close-mask.png'></image>
+        </view>
+        {{reserveInfo.date_begin}}-{{reserveInfo.date_end}}
+      </view>
+      <view class='tmpBox-main'>
+        <form bindsubmit="goOn">
+          <view class='tmpBox-info'>
+            <view wx:if="{{reserveInfo.reserve_info&&reserveInfo.reserve_info.user_id}}">
+              <view wx:if="{{reserveInfo.reserve_info.user_id!=user.user_id}}">该时间段已被以下{{appoint_type.stu_name}}预约：</view>
+              <view wx:else> 恭喜，该时间段已被你预约。</view>
+              <view>
+                <image class='stuhead' src='{{reserveInfo.reserve_info.avatar_url}}'></image>
+                <text class='reserve_user'> {{reserveInfo.reserve_info.nick_name}} （{{reserveInfo.reserve_info.real_name}}）</text>
+              </view>
+              <view wx:if="{{reserveInfo.reserve_info.user_id==user.user_id}}">
+                <view>你还可以让给别人：</view>
+                <view>
+                  <button class="weui-btn mini-btn" size="mini" open-type='share' data-type="2" data-timestr="{{reserveInfo.date_begin}}-{{reserveInfo.date_end}}">让给别人</button>
+                </view>
+                <view>注意：点击[让给别人]发送消息给别人后，别人可以点你的消息进去占用该时间段</view>
+              </view>
+            </view>
+            <view wx:elif="{{reserveInfo.reserve_info.but_info}}">
+              <view wx:if="{{appoint.appoint_user_info.user_id!=user.user_id}}">该时间段已被占用：</view>
+              <view wx:else>该时间段已被你填写内容：</view>
+              <text class='but_info'>{{reserveInfo.reserve_info.but_info}}</text>
+              <view wx:if="{{appoint.appoint_user_info.user_id==user.user_id}}">
+                <view>你是{{appoint_type.tech_name}}，你还可以将该时间段让给{{appoint_type.stu_name}}：</view>
+                <view>
+                  <button class="weui-btn mini-btn" size="mini" open-type='share' data-type="3" data-timestr="{{reserveInfo.date_begin}}-{{reserveInfo.date_end}}">让给{{appoint_type.stu_name}}</button>
+                </view>
+                <view>注意：点击[让给{{appoint_type.stu_name}}]发送消息给{{appoint_type.stu_name}}后，{{appoint_type.stu_name}}可以点你的消息进去占用该时间段</view>
+              </view>
+            </view>
+
+          </view>
+        </form>
+      </view>
+    </view>
+  </form>
+</view>

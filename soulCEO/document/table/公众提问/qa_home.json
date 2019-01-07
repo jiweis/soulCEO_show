@@ -1,0 +1,10 @@
+{
+    "des":"向橘子提问，橘子会进行语音回答，回答后你的问答将显示在当前主页",//po主问答主页描述
+    "user_id":"",
+    "po_nick_name":"",//po主名字
+    "po_avatar_url":"",//po主头像：支持云ID 默认创建者头像
+    "acode_url":"",//该问答主页小程序码url
+    "answerer_info_type":1, //回答者信息展示  1：po主的昵称和头像 2：回复者的微信昵称和头像
+    "date_add":null,
+    "date_update":null
+}

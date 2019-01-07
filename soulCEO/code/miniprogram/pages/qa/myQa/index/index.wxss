@@ -1,0 +1,80 @@
+page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-tab__content{
+    padding-top: 60px;
+    text-align: center;
+}
+.weui-form-preview{
+    margin-bottom: 25px;
+}
+.weina-tab__content{
+  padding-top:10px;
+text-align:center;
+
+}
+.wena-form-preview{
+margin-left: 10px;
+margin-right: 10px;
+background-color: rgb(231, 230, 230);
+border-radius: 10px;
+}
+
+.tmpBox{
+  width: 559rpx;
+  /* height: 430rpx; */
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+.tmpBox-title{
+  line-height: 96rpx;
+  height: 96rpx;
+  text-align: center;
+  position: relative;
+  /* margin-top: 24rpx; */
+   font-size: 36rpx;
+   color: #000;
+   border-bottom:1px solid #e0e0e0;
+}
+.closeBox{
+  width: 85rpx;
+  height: 98rpx;
+  float: right;
+  top:0rpx;
+  left: 0;
+}
+.close-img{
+  width: 20px;
+  height: 20px;
+}
+.tmpBox-main{
+  height:500rpx;
+  width: 100%;
+  position: relative;
+  overflow-y: scroll;
+  padding-bottom: 100rpx;
+}
+.tmpBox-info{
+  padding:30rpx;
+}
+
+.edit-head{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+   -webkit-border-radius:50%;
+   -moz-border-radius:50%;
+  border: 1px solid #A83A3A;
+  vertical-align: middle;
+}
